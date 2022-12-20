@@ -1,0 +1,50 @@
+//adding module to app
+
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [
+    HttpClientModule
+  ],
+  // ... other module metadata
+})
+export class AppModule { }
+
+// adding http client and headers and params in ts file
+
+
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
+export class MyComponent {
+  constructor(private http: HttpClient) {}
+}
+
+import { HttpClient } from '@angular/common/http';
+
+export class MyComponent {
+  constructor(private http: HttpClient) {}
+
+  getData() {
+    this.http.get('https://example.com/api/data').subscribe(data => {
+      // do something with the response data
+    });
+  }
+}
+
+
+//getting data using authorizations and params
+
+this.http.get('https://example.com/api/data', {
+  headers: new HttpHeaders().set('Authorization', 'my-auth-token'),
+  params: new HttpParams().set('searchKey', 'searchValue')
+}).subscribe(data => {
+  // do something with the response data
+});
+
+mapping data to get data
+
+this.http.get('https://example.com/api/data').pipe(
+  map(response => response.data)
+).subscribe(data => {
+  // do something with the data
+});
